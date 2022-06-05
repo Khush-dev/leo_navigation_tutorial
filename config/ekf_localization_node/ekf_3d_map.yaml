@@ -13,7 +13,7 @@ publish_acceleration: false
 map_frame: map
 odom_frame: odom
 base_link_frame: base_footprint
-world_frame: odom
+world_frame: map
 
 # x, y, z
 # roll, pitch, yaw
@@ -21,7 +21,7 @@ world_frame: odom
 # vroll, vpitch, vyaw
 # ax, ay, az.
 
-odom0: gazebo/controllers/diff_drive/odom
+odom0: /odom/filtered
 odom0_config: [false, false, false,
                 false, false, false,
                 true,  false, false,
@@ -30,6 +30,16 @@ odom0_config: [false, false, false,
 odom0_queue_size: 3
 odom0_rejection_threshold: 15
 odom0_nodelay: false
+
+odom1: rtabmap/vo_odom
+odom1_config: [false, false, false,
+                false, false, false,
+                true,  false, false,
+                false, false, true,
+                false, false, false]
+odom1_queue_size: 3
+odom1_rejection_threshold: 15
+odom1_nodelay: false
 
 imu0: imu/data
 imu0_config: [false, false, false,

@@ -20,18 +20,29 @@ obstacle_layer:
   footprint_clearing_enabled: true
   combination_method: 1
 
-  observation_sources: scan
+  observation_sources: zed2_pcl
 
-  scan:
-    topic: scan
-    observation_persistance: 0.0
-    expected_update_rate: 0.30
-    data_type: LaserScan
-    clearing: true
-    marking: true
-    min_obstacle_height: 0.1
-    max_obstacle_height: 0.3
-    inf_is_valid: false
+
+  zed2_pcl: {sensor_frame: zed2_left_camera_optical_frame,
+                   data_type: PointCloud2,
+                   topic: zed2/point_cloud/cloud_registered,
+                   expected_update_rate: 0.2,
+                   observation_persistence: 0.0,
+                   marking: true,
+                   clearing: true,
+                   min_obstacle_height: 0.5,
+                   max_obstacle_height: 2.0}
+
+  # scan:
+  #   topic: scan
+  #   observation_persistance: 0.0
+  #   expected_update_rate: 0.30
+  #   data_type: LaserScan
+  #   clearing: true
+  #   marking: true
+  #   min_obstacle_height: 0.1
+  #   max_obstacle_height: 0.3
+  #   inf_is_valid: false
 
 # http://wiki.ros.org/costmap_2d/hydro/inflation
 inflation_layer:

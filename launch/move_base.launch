@@ -1,7 +1,7 @@
 <launch>
   <remap from="odom" to="odometry/filtered"/>
   <remap from="cmd_vel" to="nav_vel"/>
-
+  <remap from="/map" to="/rtabmap/grid_map"/>
   <node name="move_base"
         pkg="move_base"
         type="move_base"
