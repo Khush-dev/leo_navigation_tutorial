@@ -49,7 +49,7 @@ rospy.wait_for_message("imu/gyro", Vector3Stamped)
 gyro_sub = message_filters.Subscriber('imu/gyro', Vector3Stamped)
 accel_sub = message_filters.Subscriber('imu/accel', Vector3Stamped)
 # odom_sub = rospy.Subscriber("wheel_odom", TwistStamped, odom_callback)
-odom_sub = rospy.Subscriber("gazebo/controllers/diff_drive/odom", Odometry, odom_callback)
+odom_sub = rospy.Subscriber("/wheel_odom_with_covariance", Odometry, odom_callback)
 
 ts = message_filters.TimeSynchronizer([gyro_sub, accel_sub], 5)
 ts.registerCallback(imu_callback)
